@@ -10,12 +10,12 @@ const empleados = [
   { name: "Andrea", email: "Andrea@gmail.com" },
 ];
 
-const ana = empleados[1];
+const [, ana] = empleados;
 console.log(ana);
 
 // 2.- Dado el objeto **empleados**, extrae el email del empleado Luis --> Luis@gmail.com
 
-const emailLuis = empleados[0].email;
+const { email: emailLuis } = empleados[0];
 console.log(emailLuis);
 
 // 3.- Usa destructuración para cambiar los valores de a y b;
@@ -30,10 +30,8 @@ console.log(emailLuis);
 // let b = 5;
 // ```
 
-let a = 5;
-let b = 3;
-
-[a, b] = [3, 5];
+const { a = 5, b = 3 } = { a: 3, b: 5 };
+console.log(a); 
 // console.log(a);
 // console.log(b);
 
@@ -48,8 +46,8 @@ const HIGH_TEMPERATURES = {
 const maximaHoy = HIGH_TEMPERATURES.today;
 const maximaManana = HIGH_TEMPERATURES.tomorrow;
 
-// console.log(maximaHoy);
-// console.log(maximaManana);
+console.log(maximaHoy);
+console.log(maximaManana);
 
 
 
@@ -99,10 +97,11 @@ console.log(combineTwoArrays ( [1,2,3,4], [6,9,7,8]) )
 
 let onlyUniques = (...args) => [...new Set(args)];
 console.log(onlyUniques(1,1,1,2,4,5,7,8,8,4,5,9));
+console.log(onlyUniques("gato","perro","cerdo","cerdo","gato","perro"))
 
 // 10.- Escriba una función llamada **combineAllArrays** que pueda recibir cualquier cantidad de arrays como argumentos y los combine todos en un solo array.
 
-let combineAllArrays = (...arr) => arr.reduce((a, b) => [...a, ...b] )
+let combineAllArrays = (...arr) => arr.reduce((a, b) => [...a, ...b], [])
 
 console.log(combineAllArrays ( [1,2,'queso',4], [6,'perro',7,8]) )
 
